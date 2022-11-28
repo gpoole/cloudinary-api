@@ -148,7 +148,7 @@ describe('Url', () => {
           height: 500,
           aspectRatio: '16:9',
         },
-    })).toBe('https://res.cloudinary.com/demo/image/fetch/c_scale,w_500,h_500,ar_16:9,q_auto,f_auto/v1/example')
+      })).toBe('https://res.cloudinary.com/demo/image/fetch/c_scale,w_500,h_500,ar_16:9,q_auto,f_auto/v1/example')
     })
 
     it('should return fetch deliver url with target format', () => {
@@ -208,6 +208,10 @@ describe('Url', () => {
 
     it('should return as is', () => {
       expect(extractPublicId('example')).toEqual('example')
+    })
+
+    it('should allow multiple dots in the filename before the extension', () => {
+      expect(extractPublicId('https://res.cloudinary.com/xyz/image/upload/v111111111/Folder/Name.With.Multiple.Dots.png')).toBe('Folder/Name.With.Multiple.Dots')
     })
   })
 
